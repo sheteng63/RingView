@@ -34,8 +34,8 @@ public class RingView extends View {
     private List<Float> mListAcr;
     //内圈大小
     private float mInnerRing;
-    //每次绘制的角度
-    private float mStartAcr = 1f;
+
+    private float mStartAcr = 0f;
 
     public RingView(Context context) {
         super(context, null, 0);
@@ -89,7 +89,7 @@ public class RingView extends View {
             }
 
         }
-        mStartAcr = 1;
+        mStartAcr = 0;
         invalidate();
     }
 
