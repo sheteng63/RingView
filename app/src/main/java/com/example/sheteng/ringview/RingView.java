@@ -20,16 +20,22 @@ public class RingView extends View {
     private static final String TAG = "RingView";
     private Paint mPaint;
     private Context mContext;
+    //绘制区域宽
     private float mWidth;
+    //绘制区域高
     private float mHeight;
+    //外圆直径
     private float mOuterRing;
+    //颜色
     private int[] colors = new int[]{0xFFF9A947, 0xFFe57646, 0xFF1E71BC, 0xFF428BFE};
+    //绘制区域正方形
+    private RectF mRectF;
+    //各绘制角度集合
     private List<Float> mListAcr;
     //内圈大小
-    private float mSmallAcr;
-    private float mStartAcr = 1f;
-    private RectF mRectF;
     private float mInnerRing;
+    //每次绘制的角度
+    private float mStartAcr = 1f;
 
     public RingView(Context context) {
         super(context, null, 0);
@@ -101,6 +107,9 @@ public class RingView extends View {
                 continue;
             }
             float endAcr = mStartAcr - total;
+            if (endAcr > mListAcr.get(i)){
+                endAcr = mListAcr.get(i);
+            }
             canvas.drawArc(mRectF, 270 + total, endAcr, true, mPaint);
             if (mStartAcr >= total + mListAcr.get(i)) {
                 total += mListAcr.get(i);
